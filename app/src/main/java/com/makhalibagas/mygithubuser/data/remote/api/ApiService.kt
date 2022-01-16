@@ -1,6 +1,7 @@
 package com.makhalibagas.mygithubuser.data.remote.api
 
 import com.makhalibagas.mygithubuser.data.remote.model.*
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -8,34 +9,33 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("search/users")
-    suspend fun getUser(
+    fun getUser(
         @Query("q") query : String,
         @Query("page") page : Int
-    ) : ResponseSearch
+    ) : Single<ResponseSearch>
 
     @GET("users/{username}")
-    suspend fun getDetailUser(
+    fun getDetailUser(
         @Path("username") username : String
-    ) : Users
+    ) : Single<Users>
 
     @GET("users/{username}/followers")
-    suspend fun getFollowerUser(
+    fun getFollowerUser(
         @Path("username") username : String,
         @Query("page") page : Int
-    ) : List<Users>
+    ) : Single<List<Users>>
 
 
     @GET("users/{username}/following")
-    suspend fun getFollowingUser(
+    fun getFollowingUser(
         @Path("username") username : String,
         @Query("page") page : Int
-    ) : List<Users>
+    ) : Single<List<Users>>
 
     @GET("users/{username}/repos")
-    suspend fun getRepositoryUser(
+    fun getRepositoryUser(
         @Path("username") username : String,
         @Query("page") page : Int
-    ) : List<RepositoryItem>
-
+    ) : Single<List<RepositoryItem>>
 
 }

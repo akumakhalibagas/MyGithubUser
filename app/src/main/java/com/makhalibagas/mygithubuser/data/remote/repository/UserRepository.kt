@@ -1,47 +1,26 @@
 package com.makhalibagas.mygithubuser.data.remote.repository
 
 import com.makhalibagas.mygithubuser.data.remote.api.ApiService
-import com.makhalibagas.mygithubuser.data.remote.model.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import com.makhalibagas.mygithubuser.data.remote.model.RepositoryItem
+import com.makhalibagas.mygithubuser.data.remote.model.ResponseSearch
+import com.makhalibagas.mygithubuser.data.remote.model.Users
+import io.reactivex.Single
 
 class UserRepository(private val apiService: ApiService) {
 
-    suspend fun getUser(query: String, page: Int): Flow<ResponseSearch> {
-        return flow {
-            val result = apiService.getUser(query, page)
-            emit(result)
-        }.flowOn(Dispatchers.IO)
-    }
+    fun getUser(query: String, page: Int): Single<ResponseSearch> =
+        apiService.getUser(query, page)
 
-    suspend fun getDetailUser(username: String) : Flow<Users>{
-        return flow {
-            val result = apiService.getDetailUser(username)
-            emit(result)
-        }.flowOn(Dispatchers.IO)
-    }
+    fun getDetailUser(username: String): Single<Users> =
+        apiService.getDetailUser(username)
 
-    suspend fun getFollowerUser(username: String, page:Int) : Flow<List<Users>>{
-        return flow {
-            val result = apiService.getFollowerUser(username, page)
-            emit(result)
-        }.flowOn(Dispatchers.IO)
-    }
+    fun getFollowerUser(username: String, page: Int): Single<List<Users>> =
+        apiService.getFollowerUser(username, page)
 
-    suspend fun getFollowingUser(username: String,page: Int) : Flow<List<Users>>{
-        return flow {
-            val result = apiService.getFollowingUser(username, page)
-            emit(result)
-        }.flowOn(Dispatchers.IO)
-    }
+    fun getFollowingUser(username: String, page: Int): Single<List<Users>> =
+        apiService.getFollowingUser(username, page)
 
-    suspend fun getReposUser(username: String, page: Int) : Flow<List<RepositoryItem>>{
-        return flow {
-            val result = apiService.getRepositoryUser(username, page)
-            emit(result)
-        }.flowOn(Dispatchers.IO)
-    }
+    fun getReposUser(username: String, page: Int): Single<List<RepositoryItem>> =
+        apiService.getRepositoryUser(username, page)
 
 }

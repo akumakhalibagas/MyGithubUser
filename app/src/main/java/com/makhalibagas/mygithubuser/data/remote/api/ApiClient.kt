@@ -5,11 +5,13 @@ import android.content.Intent
 import com.makhalibagas.mygithubuser.BuildConfig
 import com.makhalibagas.mygithubuser.ui.main.view.MainActivity
 import com.readystatesoftware.chuck.ChuckInterceptor
+import io.reactivex.schedulers.Schedulers
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
@@ -37,6 +39,7 @@ fun provideApiService(okHttpClient: OkHttpClient): ApiService {
         .baseUrl("https://api.github.com/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
         .build()
     return retrofit.create(ApiService::class.java)
 }
