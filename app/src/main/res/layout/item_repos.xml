@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="6dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="12dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/repos_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@color/gray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_name_repos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/repos_image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Meet-App" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_decs_repos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="3dp"
+                android:textSize="13sp"
+                app:layout_constraintStart_toEndOf="@id/repos_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_name_repos"
+                tools:text="Apps meet with jitsi library" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_language_repos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:drawableStart="@drawable/ic_circle"
+                android:drawablePadding="3dp"
+                android:text="JavaScript"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/repos_image"
+                app:layout_constraintTop_toBottomOf="@id/tv_decs_repos" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_count_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:drawableStart="@drawable/ic_stars"
+                android:drawablePadding="3dp"
+                android:text="1029"
+                android:textSize="12sp"
+                app:layout_constraintStart_toEndOf="@id/tv_language_repos"
+                app:layout_constraintTop_toBottomOf="@id/tv_decs_repos" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
